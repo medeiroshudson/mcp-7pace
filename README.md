@@ -168,10 +168,12 @@ When `SEVENPACE_TOKEN` is not set or is the placeholder value (`test-token-repla
 
 ## Docker
 
-### Build
+**Image:** `ghcr.io/medeiroshudson/mcp-7pace:main`
+
+### Pull
 
 ```bash
-docker build -t sevenpace-mcp .
+docker pull ghcr.io/medeiroshudson/mcp-7pace:main
 ```
 
 ### Run (stdio mode)
@@ -179,7 +181,7 @@ docker build -t sevenpace-mcp .
 ```bash
 docker run -e SEVENPACE_ORGANIZATION=your_org \
            -e SEVENPACE_TOKEN=your_token \
-           sevenpace-mcp
+           ghcr.io/medeiroshudson/mcp-7pace:main
 ```
 
 ### Run (HTTP mode)
@@ -189,7 +191,13 @@ docker run -e SEVENPACE_ORGANIZATION=your_org \
            -e SEVENPACE_TOKEN=your_token \
            -e PORT=3000 \
            -p 3000:3000 \
-           sevenpace-mcp
+           ghcr.io/medeiroshudson/mcp-7pace:main
+```
+
+### Build locally (optional)
+
+```bash
+docker build -t mcp-7pace .
 ```
 
 ## Architecture
