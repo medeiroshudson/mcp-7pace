@@ -92,8 +92,9 @@ public class WorklogServiceTests
         // Arrange — end of day for inclusive upper bound
         var date = new DateTimeOffset(2026, 7, 16, 0, 0, 0, TimeSpan.FromHours(-3));
 
-        // Act
-        var result = date.Date.AddDays(1).AddSeconds(-1).ToString("yyyy-MM-ddTHH:mm:sszzz");
+        // Act — construct end-of-day preserving the original offset
+        var endOfDay = new DateTimeOffset(date.Year, date.Month, date.Day, 23, 59, 59, date.Offset);
+        var result = endOfDay.ToString("yyyy-MM-ddTHH:mm:sszzz");
 
         // Assert
         Assert.Equal("2026-07-16T23:59:59-03:00", result);
