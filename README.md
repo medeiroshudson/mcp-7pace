@@ -200,6 +200,28 @@ docker run -e SEVENPACE_ORGANIZATION=your_org \
 docker build -t mcp-7pace .
 ```
 
+### Use as an MCP server (GitHub Container Registry)
+
+For Claude Desktop, Claude Code, or any MCP client that supports stdio, configure the container as follows:
+
+```json
+{
+  "mcpServers": {
+    "7pace": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "SEVENPACE_ORGANIZATION=your_org",
+        "-e", "SEVENPACE_TOKEN=your_token",
+        "ghcr.io/medeiroshudson/mcp-7pace:main"
+      ]
+    }
+  }
+}
+```
+
+The container must be able to reach the 7Pace API. Use `-e TZ=America/Sao_Paulo` when a specific timezone is required.
+
 ## Architecture
 
 This server follows the architecture of [mcp-devops](https://github.com/mcp-devops) with:
